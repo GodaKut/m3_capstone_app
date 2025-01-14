@@ -11,7 +11,7 @@ from io import StringIO
 
 
 app = FastAPI()
-
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 origins = [
     "http://localhost:8501",  # Default Streamlit port
     "http://127.0.0.1:8501",  # Localhost address
