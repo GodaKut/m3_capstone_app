@@ -8,7 +8,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import pickle
 from io import StringIO
-
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 app = FastAPI()
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
