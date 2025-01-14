@@ -66,20 +66,6 @@ def load_and_prep_data(per_data):
         cols_to_scale = pickle.load(f)
 
 
-
-    download_from_gcs("gk_m3_capstone_bucket", "installments_payments.csv", "installments_payments.csv")
-    download_from_gcs("gk_m3_capstone_bucket", "bureau.csv", "bureau.csv")
-    download_from_gcs("gk_m3_capstone_bucket", "POS_CASH_balance.csv", "POS_CASH_balance.csv")
-    download_from_gcs("gk_m3_capstone_bucket", "previous_application.csv", "previous_application.csv")
-    download_from_gcs("gk_m3_capstone_bucket", "POS_CASH_balance.csv", "POS_CASH_balance.csv")
-
-    
-    installments_payments = pd.read_csv( "installments_payments.csv", index_col=0)
-    bureau = pd.read_csv( "bureau.csv", index_col=1)
-    application_prev = pd.read_csv( "previous_application.csv", index_col=0)
-    POS_CASH_balance = pd.read_csv( "POS_CASH_balance.csv", index_col=0)
-
-
     #installments_payments = pd.read_csv(os.path.join(DATA_DIR, "installments_payments.csv"), index_col=0)
     #bureau = pd.read_csv(os.path.join(DATA_DIR, "bureau.csv"), index_col=1)
     #application_prev = pd.read_csv(os.path.join(DATA_DIR, "previous_application.csv"), index_col=0)
