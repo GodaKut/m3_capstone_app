@@ -2,6 +2,8 @@ import pickle
 from pathlib import Path
 import os
 from google.cloud import storage
+import sys
+sys.path.append(os.getcwd())
 import preprocessing
 
 # Path to your service account key
