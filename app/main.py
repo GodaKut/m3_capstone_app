@@ -1,14 +1,16 @@
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from fastapi import FastAPI
 from pydantic import BaseModel
-from app.model.model import predict_pipeline
-from app.model.model import __version__ as model_version
+from model.model import predict_pipeline
+from model.model import __version__ as model_version
 import pandas as pd 
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import pickle
 from io import StringIO
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 
 app = FastAPI()
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
