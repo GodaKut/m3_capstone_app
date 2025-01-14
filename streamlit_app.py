@@ -22,7 +22,7 @@ if uploaded_file is not None:
         # Rewind the uploaded file and prepare it for the POST request
         uploaded_file.seek(0)  # Reset the file pointer to the beginning
         response = requests.post(
-            "https://m3-capstone-fast-api.onrender.com/predict/",  # FastAPI endpoint
+            "https://m3-capstone-live.onrender.com/predict/",  # FastAPI endpoint
             files={"file": ("uploaded_file.csv", uploaded_file, "text/csv")}  # Set the correct content-type
         )
 
