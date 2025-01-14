@@ -1,5 +1,6 @@
 scikit-learn == 1.2.2
 pandas == 2.1.4
+python-multipart == 0.0.20
 pydantic == 2.10.5
 uvicorn == 0.32.0
 fastapi == 0.115.4
