@@ -4,7 +4,7 @@ import os
 from google.cloud import storage
 
 # Path to your service account key
-#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:\M3_capstone\gkm3capstone-banking-project-7ac9a260a17b.json"
+
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 def download_from_gcs(bucket_name, source_blob_name, destination_file_name):
     """
