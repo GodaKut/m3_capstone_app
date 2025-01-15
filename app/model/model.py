@@ -5,7 +5,9 @@ from google.cloud import storage
 import sys
 #current_dir = os.path.dirname(os.path.abspath(__file__))
 #sys.path.append(current_dir)
-import preprocessing
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),"prep"))
+from prep.preprocessing import FeatureExtractionTransformer, DropUnselectedColumns, EncodeOrganizationType, ReorderColumns, DecodeCatOrdEncoding
 
 # Path to your service account key
 
@@ -38,7 +40,35 @@ with open(os.path.join(BASE_DIR,"model.pkl"), "rb") as f:
 
 def load_and_prep_data(per_data):
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    download_from_gcs("gk_m3_capstone_bucket", "engineered_and_selected.pkl", (os.path.join(BASE_DIR,"engineered_and_selected.pkl")))
+    download_from_gcs("gk_m3_capstone_bucket", "ordinal_enc_cols.pkl", (os.path.join(BASE_DIR,"ordinal_enc_cols.pkl")))
+    download_from_gcs("gk_m3_capstone_bucket", "one_hot_enc_cols.pkl", (os.path.join(BASE_DIR,"one_hot_enc_cols.pkl")))
+    download_from_gcs("gk_m3_capstone_bucket", "categories.pkl", (os.path.join(BASE_DIR,"categories.pkl")))
+    download_from_gcs("gk_m3_capstone_bucket", "rank_selected_columns.pkl", (os.path.join(BASE_DIR,"rank_selected_columns.pkl")))
+    download_from_gcs("gk_m3_capstone_bucket", "VIF_drop.pkl", (os.path.join(BASE_DIR,"VIF_drop.pkl")))
+    download_from_gcs("gk_m3_capstone_bucket", "cols_to_scale.pkl", (os.path.join(BASE_DIR,"cols_to_scale.pkl")))
 
+    with open(os.path.join(BASE_DIR,"engineered_and_selected.pkl"), 'rb') as f:
+        engineered_and_selected = pickle.load(f)
+
+    with open(os.path.join(BASE_DIR,"ordinal_enc_cols.pkl"), "rb") as f:
+        ordinal_enc_cols = pickle.load(f)
+        
+    with open(os.path.join(BASE_DIR,"one_hot_enc_cols.pkl"), "rb") as f:
+        one_hot_enc_cols = pickle.load(f)
+        
+    with open(os.path.join(BASE_DIR,"categories.pkl"), "rb") as f:
+        categories = pickle.load(f)
+        
+    with open(os.path.join(BASE_DIR,"rank_selected_columns.pkl"), "rb") as f:
+        rank_selected_columns = pickle.load(f)
+
+    with open(os.path.join(BASE_DIR,"VIF_drop.pkl"), "rb") as f:
+        VIF_drop = pickle.load(f)
+
+    with open(os.path.join(BASE_DIR,"cols_to_scale.pkl"), "rb") as f:
+        cols_to_scale = pickle.load(f)
+        
     download_from_gcs("gk_m3_capstone_bucket", "fitted_preprocessig_pipeline.pkl", (os.path.join(BASE_DIR,"fitted_preprocessig_pipeline.pkl")))
     with open(os.path.join(BASE_DIR,'fitted_preprocessig_pipeline.pkl'), 'rb') as f:
         prerocess_pipeline = pickle.load(f)
