@@ -3,8 +3,8 @@ from pathlib import Path
 import os
 from google.cloud import storage
 import sys
-current_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(current_dir)
+#current_dir = os.path.dirname(os.path.abspath(__file__))
+#sys.path.append(current_dir)
 import preprocessing
 
 # Path to your service account key
